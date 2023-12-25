@@ -1,0 +1,135 @@
+%-------------------------------------------------------------
+% 导言区
+\documentclass{beamer}
+\usepackage[UTF8]{ctex}
+\usepackage{hyperref}
+\usepackage[T1]{fontenc}
+
+\usepackage{latexsym,xcolor,multicol,booktabs,calligra}
+\usepackage{amsmath,amssymb,BOONDOX-cal,bm}		%   数学公式宏包
+\usepackage{graphicx,pstricks,stackengine,animate}      %   请自行查找相关宏包作用
+
+%   个人信息
+\author{Me\_tooo}
+\title{升力的简化解释}
+\subtitle{新生研讨课}
+\institute{}     % 在这可以修改学院
+\date{\today}
+
+%   右下角添加川大logo 你也可以使用eps或jpg格式 
+%   下面是两种添加logo的code 不同的文件有不同的清晰度 自行选择合适的code
+%\pgfdeclareimage[height=0.8cm]{SCU-Logo}{SCU-Logo.pdf}  
+%\logo{\pgfuseimage{SCU-Logo}\hspace*{0.3cm}}
+%\logo{\includegraphics[height=0.8cm]{SCU-Logo.jpg}\hspace*{0.3cm}}
+
+%   设置主题文件    后缀名为.sty的文件是一个主题文件,初学者不要修改sty文件
+\usepackage{SCU}
+
+
+
+%   defs 特殊字体
+\def\cmd#1{\texttt{\color{red}\footnotesize $\backslash$#1}}
+\def\env#1{\texttt{\color{blue}\footnotesize #1}}
+
+
+%   简化定理命令
+\newtheorem{thm}{Theorem}[theorem]
+
+
+%—-------------------------------------------------------------
+% 正文区
+
+\begin{document}
+    % 字体字号设置
+    \kaishu \zihao{-5}
+	
+	% 封面
+	\begin{frame}
+		\titlepage
+		%   校徽    在陈老师的建议下封面不添加logo，只在所有页面右下角添加川大Logo
+		%\begin{figure}[htpb]
+		%	\begin{center}
+		%		\includegraphics[width=0.2\linewidth]{SCU_Logo.png} 
+		%	\end{center}
+		%\end{figure}
+	\end{frame}
+	
+	% 目录
+	\begin{frame}
+		\tableofcontents[sectionstyle=show,subsectionstyle=show/shaded/hide,subsubsectionstyle=show/shaded/hide]
+	\end{frame}
+		
+	
+	%—------------------------------------------------------
+	% 正文
+	\section{简化解释}
+	
+		\begin{frame}
+			\begin{itemize}
+	    % structure和alert命令则用于在指定的步骤设置高亮，前者使用幻灯片结构的色彩，后者使用的是更鲜明的警告色彩
+				\item 对于升力的简化解释，通常有以下理论:\\
+				1.等时理论:\\
+				飞机前进时,以飞机为参考系，气流相对于飞机迎面运动，在翼型前缘点被分为上下两部分,沿翼型上下表面运动的气流必将同时在翼型后缘点汇合； 由于翼型上下表面形状不对称，上表面的路程较长，因而气流速度较快，根据伯努利原理,流速快的气压小,这样就导致下翼面压强大于上翼面压强，从而产生升力。\\
+				2.漂石理论:\\
+				飞机在飞行时不断地向下推开空气，有质量的空气会产生一个大小相等、方向相反的力作用于飞机,竖直方向的分力即为升力。
+			\end{itemize}
+		\end{frame}
+		\begin{frame}
+			\begin{itemize}
+				\item3.流管变化理论:\\
+				根据流体的连续性原理：当流体连续不断地流过一个粗细不等的管道时，由于管道中任一部分的流体都不能中断或堆积，因此在同一时间内,流进任一截面的流体质量和流出另一截面的流体质量相等。当空气流过翼型上下表面时，由于其上表面凸起,导致上方流线间距较窄，而下方较平坦,流线间距较宽，因此上翼面的空气流速大于下翼面的空气流速％又根据伯努利原理，流速快的气压小,上下翼面的气流会产生压强差,从而形成升力。
+			\end{itemize}
+		\end{frame}
+	\section{存在的问题}
+	    \subsection{等时理论}
+	
+		\begin{frame}{等时理论的问题}
+		\begin{itemize}
+			\item 按照风洞试验和CFD模拟，机翼附近上表面先到达后缘点\\
+			因此等时理论科学性欠佳
+			\includegraphics[height=4cm]{pic1.png}
+		\end{itemize}
+
+		\end{frame}
+	
+		\subsection{流管变化理论}	
+		\begin{frame}{流管变化理论的问题}
+		\begin{enumerate}
+			\item 存在疑问：\\
+			1.流管的变化是否足够明显，产生足够的升力\\
+			2.真实的机翼绕流具有三维性,流管变化仅考虑二维流动，尤其是三角翼等低展弦比的机翼
+		\end{enumerate}
+		\end{frame}
+
+		\subsection{漂石理论}	
+		\begin{frame}{漂石理论的问题}
+		\begin{enumerate}
+			\item 它更像是通过升力的现象反推出空气方向的变化，适用任何情况，但不能解释观察不到的现象和原理：\\
+			1.它并没有解释，机翼如何使比它实际碰触部分还远得多的流体也能产生偏转。\\
+			2.它也没有解释水平方向上的压力差是如何维持的。	
+		\end{enumerate}
+		\end{frame}
+	\section{较全面的解释}
+		\subsection{一种具有争议的解释}
+		\begin{frame}
+		\begin{itemize}
+			\item 对于升力较全面的解释，不考虑环量，就是有争议的康达效应。\\
+			康达效应包括任何“流体边界层会去附着在曲面上”的趋势，而不只是专用于流体射流的边界层。
+		\end{itemize}
+		\end{frame}
+		\subsection{稍加整合的解释}
+		\begin{frame}
+		\begin{itemize}
+		\item  Doug Mclean于2018年将气流方向偏转、气流速度变化、空气低压区、空气高压区四个要素利用牛顿第二定律与牛顿第三定律进行联系,提出一套综合理论定性地解释这一问题:\\
+		他指出空气是一种连续的介质,会根据翼型的不同产生形变所以机翼上方和下方都会出现空气的形变。当机翼存在向上的倾角时，会使一部分气流向下偏转从而改变周围空气的压强分布，所以空气之间会产生压强差，压强差的出现就会在空气之间产生压力。由牛顿第二定律可知，这些力使空气朝着力的方向加速。翼型上方的空气被推向并加速至最低压力区域，而翼型下方的空气则从最高压力区域向外推动和加速，因此流动方向的变化是由压力场产生的加速度引起。相对而言，压力差的存在与否和大小变化也是由流体团的加速情况决定。而水平方向的流速则是受箭头所示力的水平分量的影响，所以在机翼上方的气流会比机翼下方的气流更快。机翼的升力则来源于压力场对机翼产生的向上的作用力，而压力场的存在是翼型对空气施加相等和相反的向下力的结果。这四个要素之间互成因果，相互影响、相互维持。
+		\end{itemize}
+		\end{frame}
+
+	\section{结语}
+	\begin{frame}
+		\begin{center}
+			{\Huge \emph {\textrm{Thank  ~you!}}}
+		\end{center}
+	\end{frame}
+	%--------------------------------------------------
+\end{document}
